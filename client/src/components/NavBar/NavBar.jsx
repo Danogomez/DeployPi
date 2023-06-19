@@ -23,6 +23,7 @@ const NavBar = () => {
         dispatch(orderByname(event.target.value))
     }
     const handleOrderRating = (event)=> {
+        event.preventDefault();
         dispatch(orderByRating(event.target.value))
     }
 

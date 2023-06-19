@@ -8,6 +8,7 @@ import {
     ORDER_BY_RATING,
     FILTER_BY_GENRES,
     FILTER_BY_ORIGIN,
+    DELETE_GAME_DETAIL,
 } from './action-types'
 
 
@@ -39,6 +40,12 @@ const rootReducer = (state= initialState, action) => {
                 ...state,
                 gameDetail: action.payload,
             };
+
+        case DELETE_GAME_DETAIL: 
+        return {
+         ...state,
+         videoGames: state.copiaVideoGames.filter((e)=>e.id !== action.payload),
+        };
         case SEARCH_BAR:
             return {
                 ...state,
@@ -72,7 +79,7 @@ const rootReducer = (state= initialState, action) => {
                 videoGames: action.payload === "A-Z" ? sortedGames : sortedGames.reverse()
             }
             case ORDER_BY_RATING:
-                const orderGames = [...state.videoGames].sort((a, b) => (a.rating > b.rating) ? 1 : -1);
+                const orderGames = [...state.videoGames].sort((a, b) => (a.rating > b.rating));
             return {
                 ...state,
                 videoGames: action.payload === "Ascendente" ? orderGames : orderGames.reverse()

@@ -7,20 +7,20 @@ import { Link } from 'react-router-dom';
 
 const Detail = ()=> {
     const {detailId} = useParams();
-    
     const detail = useSelector((state) => state.gameDetail);
     const dispatch = useDispatch();
     
-     
-
+    
 
     useEffect(()=>{
+      
     dispatch(getGameId(detailId));
     },[dispatch, detailId]);
         
-    return (
-        <div className={style.padre} >
+    
 
+      return (
+        <div className={style.padre} >
         <div className={style.card}>
           <div >
             {detail.name ? (
@@ -28,7 +28,7 @@ const Detail = ()=> {
                 <div className={style.buttonEffect}>
                   <Link to="/home">
                     {/* <a  className={style.a} href="#"><span >BACK HOME</span><i></i></a> */}
-                    <button className={style.button}>BACK HOME</button>
+                    <button  className={style.button}>BACK HOME</button>
                   </Link>
 
                 </div>

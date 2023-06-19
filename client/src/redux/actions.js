@@ -32,6 +32,13 @@ export const getGenres = ()=> {
     }
 };
 
+export const removeGame = (detailId)=> {
+    return async function (dispatch) {
+        await axios.delete(`/videogames/${detailId}`)
+        return dispatch({type: DELETE_GAME_DETAIL, payload: detailId})
+    }
+}
+
 export const searchBar = (name) => {
     return async function (dispatch) {
     const nameGame = await axios.get(
