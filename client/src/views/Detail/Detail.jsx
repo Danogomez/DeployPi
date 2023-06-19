@@ -28,7 +28,7 @@ const Detail = ()=> {
                 <div className={style.buttonEffect}>
                   <Link to="/home">
                     {/* <a  className={style.a} href="#"><span >BACK HOME</span><i></i></a> */}
-                    <button>BACK HOME</button>
+                    <button className={style.button}>BACK HOME</button>
                   </Link>
 
                 </div>

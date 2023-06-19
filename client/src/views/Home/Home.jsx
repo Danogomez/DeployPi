@@ -67,8 +67,8 @@ const Home = ()=> {
         <div className={style.main}>
         {loading ? (
           <div>
-            <h1>im loading</h1>
-         <img src="https://media1.giphy.com/media/l4FGjq205dsq8mcw0/200.webp?cid=ecf05e47o7xmbjf5pejt7od9k3eo506d8zr4ycrawnvb88ya&ep=v1_gifs_search&rid=200.webp&ct=g" alt="Cargando..."/>
+
+         <img src="https://media0.giphy.com/media/cnzP4cmBsiOrccg20V/giphy.gif?cid=ecf05e47r7afbzr9drng3k6xdvih33w728pf6djy7lseyde1&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Cargando..."/>
           </div>
         )
         : (

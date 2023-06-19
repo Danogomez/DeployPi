@@ -3,12 +3,13 @@ import style from './Form.module.css';
 // import ValidationForm from './ValidationForm' 
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllGames, getGenres } from '../../redux/actions';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
 const Form = ()=> {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(()=>{
         dispatch(getGenres());
@@ -46,7 +47,7 @@ const Form = ()=> {
       ];
 
       const genres = useSelector((state)=> state.genres)
-      const videogames = useSelector((state)=> state.videogames); 
+    //   const videogames = useSelector((state)=> state.videogames); 
 
 
 
@@ -94,6 +95,7 @@ const Form = ()=> {
             genre: [] ,
         })
         dispatch(getAllGames());
+        navigate('/home');
         alert(postGame.data.message);
         }        
     };
@@ -112,14 +114,17 @@ const Form = ()=> {
           setDataGame({ ...dataGame, genre: [...dataGame.genre, e.target.value] });
         }
       };
-
+    
       const handleClickGenres = (e) => {
         e.preventDefault();
-        setDataGame({
-          ...dataGame,
-          genre: dataGame.genre.filter((plant) => plant !== e.target.value),
-        });
+        const genreact = e.target.value;
+            setDataGame({
+              ...dataGame,
+              genre: dataGame.genre.filter((genre) => genre !== genreact),
+            });
+          
       };
+
 
     const handleClickPlatforms = (e) => {
         e.preventDefault()
@@ -148,7 +153,7 @@ const Form = ()=> {
         <form onSubmit={handleSubmit}  >
 
         <Link to="/home">
-            <button className={style.buttonEffect}>BACK HOME</button>
+            <button className={style.button}>BACK HOME</button>
           </Link>
             {/* <a  className={style.a} href="#"><span >BACK HOME</span><i></i></a> */}
         {validate && <div>{validate}</div>}
@@ -189,7 +194,6 @@ const Form = ()=> {
             <div className={style.todoinput}>
                 <select
                     onChange={handleCheckPlatforms}
-                    // className={style.option}
                     value={valueSelect}
                     id="1"
                 >                 
@@ -206,6 +210,7 @@ const Form = ()=> {
                 </select>
                 <div className={style.todoinput}>
                     {dataGame.platforms.map((e, index) => {
+            
                     return (
                         <button
                         // className={style.buttonSelect}
@@ -263,7 +268,7 @@ const Form = ()=> {
                     })}
                 </select>
 
-            <div >
+            <div className={style.todoinput} >
                 {dataGame.genre.map((e, index) => {
                 return (
                     <button
@@ -279,7 +284,7 @@ const Form = ()=> {
             </div>
             </div>
             <button type="submit"
-            className={style.buttonEffectcreate} >CREATE</button>
+            className={style.button} >CREATE</button>
         </form>
     </div> 
     </div>
