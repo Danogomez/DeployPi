@@ -2,14 +2,27 @@
   /* background-image: url('https://img.freepik.com/foto-gratis/equipo-videojuegos-futurista-iluminado-ia-generativa-discoteca_188544-32105.jpg?w=740&t=st=1686659192~exp=1686659792~hmac=05810c11b506e17cb5ade918cc1c2bed87a142c2ba5f7d4fad02922c6c9bd808'); */
   background-repeat: no-repeat;
   background-image: url('https://i.pinimg.com/originals/0c/94/1d/0c941d8e13f5c6560d94b9d9a1b24094.jpg');
-
   background-size: cover;
   width: auto;
-  height: auto;
-  /* height: 100vh; */
-  background-attachment: scroll; 
+  height: max-content;
+  /* background-attachment: scroll;  */
 }
 
+.card{
+  text-align: center;
+  margin-top: 20px;
+  background-color: rgba(60, 57, 66, 0.439);
+  width: 150vh;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 50px;
+  font-family: 'arial', cursive;
+  font-size: .8rem;
+  box-shadow: 10px 10px 5px 0px rgba(9, 6, 6, 0.75);
+  text-shadow: 8px 8px 4px black, 0 0 22px grey ;
+  color: white ;
+  
+}
 .navContainer {
   display: flex;
   flex-direction: row; /* Cambia la dirección a horizontal para pantallas más grandes */

@@ -8,6 +8,7 @@ import {
     ORDER_BY_RATING,
     FILTER_BY_GENRES,
     FILTER_BY_ORIGIN,
+    DELETE_GAME_DETAIL,
 } from './action-types'
 import axios from 'axios';
 
@@ -22,22 +23,29 @@ export const getAllGames = ()=> {
 };
 
 
+// export const getGenres =  () => {
+//     return async function (dispatch) {
+//     const URL_BASE = '/genres'
+//     const peticion = await axios.get(URL_BASE)
+//         const generos = peticion.data.map((e)=>e.name)
+//         return dispatch({type: GET_GENRES, payload: generos})
+//     }
+// }
+
+// 1 modelo con fetch y then...
 export const getGenres = ()=> {
-    return async function (dispatch) {
-        const URL_BASE = '/genres';
-        const genresData = await axios.get(URL_BASE);
-        const genres = genresData.data.map(e=>e.name)
-
-        return dispatch({type: GET_GENRES, payload: genres})
-    }
-};
-
-export const removeGame = (detailId)=> {
-    return async function (dispatch) {
-        await axios.delete(`/videogames/${detailId}`)
-        return dispatch({type: DELETE_GAME_DETAIL, payload: detailId})
+    return function (dispatch) {
+        const URL_BASE = '/genres'
+        axios.get(URL_BASE)
+        .then((response)=> {
+            const generos = response.data.map((e)=>e.name)
+            dispatch({type:GET_GENRES, payload: generos})
+        })
     }
 }
+
+
+
 
 export const searchBar = (name) => {
     return async function (dispatch) {
@@ -57,6 +65,16 @@ export const goHome = () => {
         
        return dispatch({type: GO_HOME,  payload: peticion.data})
     };
+}
+
+// delete gameDb.. 
+export const delGame = (detailId) => {
+    return async function (dispatch) {
+    await axios.delete(`/videogames/${detailId}`)
+        
+        dispatch({ type: DELETE_GAME_DETAIL, payload: detailId })
+  
+    }
 }
 
 // para el detail... 

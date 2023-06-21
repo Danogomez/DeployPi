@@ -2,7 +2,7 @@ import style from './Detail.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getGameId } from '../../redux/actions';
+import { getGameId, delGame, getAllGames } from '../../redux/actions';
 import { Link } from 'react-router-dom';
 
 const Detail = ()=> {
@@ -17,7 +17,10 @@ const Detail = ()=> {
     dispatch(getGameId(detailId));
     },[dispatch, detailId]);
         
-    
+    const handleDelete = () => {
+      dispatch(delGame(detailId));
+      dispatch(getAllGames())
+    };
 
       return (
         <div className={style.padre} >
@@ -45,8 +48,13 @@ const Detail = ()=> {
                 <p>RELEASE DATE: {detail.released}</p>
                 <p>RATING: {detail.rating}</p>
                 <p >DESCRIPTION: {detail.description.replace(/<[^>]+>/g, "")}</p>
-                {(detail.created === true)?(<Link to="/home">
-                </Link>) : (<div></div>)
+                {(detail.created === true)
+                ? 
+                (<Link to="/home">
+                <button onClick={handleDelete}>DELETE GAME
+                </button>
+                </Link> )
+                : (<div></div>)
                 }
               </>
             ) : (

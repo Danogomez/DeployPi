@@ -16,15 +16,14 @@ const About = ()=> {
       <div>
 
           <div className={style.instaLinkContainer}>
-            <a href="https://www.instagram.com/dano.gomez" target="_blank" rel="noopener noreferrer">
+            <a className="icon" href="https://www.instagram.com/dano.gomez" target="_blank" rel="noopener noreferrer">
               <img src={instaLogo} alt="Instagram" />
             </a>
             </div>
                 <img className={style.imagen} src={imagen} alt="" />
         <h1>Daniel Gómez </h1>
       </div>
-
-                
+      
           </div>
         
         </div>

@@ -46,6 +46,7 @@ const rootReducer = (state= initialState, action) => {
          ...state,
          videoGames: state.copiaVideoGames.filter((e)=>e.id !== action.payload),
         };
+        
         case SEARCH_BAR:
             return {
                 ...state,

@@ -17,6 +17,7 @@ const Home = ()=> {
         useEffect(()=>{
         dispatch(getGenres());
         dispatch(getAllGames())
+
         .then(res=>setLoading(false));
         // dispatch(setDetail());
     },[dispatch]);
@@ -71,7 +72,10 @@ const Home = ()=> {
          <img src="https://media0.giphy.com/media/cnzP4cmBsiOrccg20V/giphy.gif?cid=ecf05e47r7afbzr9drng3k6xdvih33w728pf6djy7lseyde1&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Cargando..."/>
           </div>
         )
-        : (
+        : videoGames.length === 0 ? 
+        <h1 className={style.card}>Not videogames Found</h1> 
+        : 
+        (
             <div className={style.cardsContainer}>
                 <CardsContainer games={currentGames}/>
             </div>
