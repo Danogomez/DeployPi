@@ -110,33 +110,38 @@ const Form = ()=> {
 
     const handleCheckGenres = (e) => {
         e.preventDefault();
-        if (e.target.value) {
-          setDataGame({ ...dataGame, genre: [...dataGame.genre, e.target.value] });
+        const genreAct = e.target.value
+        if (genreAct && !dataGame.genre.includes(genreAct)) {
+          setDataGame({ ...dataGame, genre: [...dataGame.genre, genreAct] });
         }
       };
     
-      const handleClickGenres = (e) => {
+      const handleClickGenres = (e, index) => {
         e.preventDefault();
-        const genreact = e.target.value;
+        const newGenres = [...dataGame.genre];
+        newGenres.splice(index,1)
             setDataGame({
               ...dataGame,
-              genre: dataGame.genre.filter((genre) => genre !== genreact),
+              genre: newGenres,
             });
           
       };
 
 
-    const handleClickPlatforms = (e) => {
+    const handleClickPlatforms = (e, index) => {
         e.preventDefault()
+        const newPlatforms = [...dataGame.platforms];
+        newPlatforms.splice(index, 1);
         setDataGame({
             ...dataGame,
-            platforms: dataGame.platforms.filter((p)=> p !== e.target.value)
+            platforms: newPlatforms
         });
     };
     const handleCheckPlatforms = (e) => {
         e.preventDefault();
-        if (e.target.value) {
-          setDataGame({ ...dataGame, platforms: [...dataGame.platforms, e.target.value] });
+        const platform = e.target.value
+        if(platform && !dataGame.platforms.includes(platform)) {
+          setDataGame({ ...dataGame, platforms: [...dataGame.platforms, platform] });
         }
         setValueSelect("0");
       };
@@ -214,7 +219,8 @@ const Form = ()=> {
                     return (
                         <button
                         // className={style.buttonSelect}
-                        onClick={handleClickPlatforms}
+                        // onClick={handleClickPlatforms}
+                        onClick={(event) => handleClickPlatforms(event, index)}
                         key={index}
                         value={e}
                         >
@@ -273,7 +279,7 @@ const Form = ()=> {
                 return (
                     <button
                     // className={style.buttonSelect}
-                    onClick={handleClickGenres}
+                    onClick={(event)=> handleClickGenres(event, index)}
                     key={index}
                     value={e}
                     >
