@@ -5,7 +5,7 @@ import { getAllGames, searchBar } from "../../redux/actions";
 
 
 
-const SearchBar = () => {
+const SearchBar = ({setCurrentPage}) => {
     const [name, setName] = useState('');
     const dispatch = useDispatch();
     
@@ -14,11 +14,14 @@ const SearchBar = () => {
     const handleSearch = (event) => {
         // event.preventDefault();
         setName(event.target.value)
+        
     };
 
     const dispatchName = (e) => {
         e.preventDefault()
-    dispatch(searchBar(name));
+        dispatch(searchBar(name))
+        .then(res => setCurrentPage(1))
+        
         setName("");   
         
     };

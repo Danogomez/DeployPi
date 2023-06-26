@@ -19,10 +19,9 @@ const Home = ()=> {
         dispatch(getAllGames())
 
         .then(res=>setLoading(false));
-        // dispatch(setDetail());
     },[dispatch]);
     
-    const gamesPage = 15; // Establecer aquí la cantidad de juegos por página.
+    const gamesPage = 15; 
   
     const indexOfLastGame = currentPage * gamesPage;
     const indexOfFirstGame = indexOfLastGame - gamesPage;
@@ -52,9 +51,9 @@ const Home = ()=> {
     return (
               <div className={style.landing}>
       
-            {/* <div className={style.navContainer}> */}
-            <NavBar ></NavBar>
-            {/* </div> */}
+            
+            <NavBar setCurrentPage={setCurrentPage}  ></NavBar>
+            
             
         <div className={style.paginado}>
           <button className={style.unButton} onClick={prev}>PREV</button>

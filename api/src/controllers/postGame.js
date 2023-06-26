@@ -2,7 +2,7 @@ const { Videogame, Genres } = require("../db");
 
 const gamePost = async (req,res) => {
     try {
-        const { name, description, platforms, background_image, released, rating, genre } = req.body;
+        const { name, apellido, description, platforms, background_image, released, rating, genre } = req.body;
         // console.log(req.body);
         if(
             !name ||
@@ -33,7 +33,7 @@ const gamePost = async (req,res) => {
                 });
                 // console.log(newGameForm);
                 if(created) {
-                    res.status(200).json({message: 'VIDEOGAME CREATED SUCCESSFULLY'});
+                    return res.status(200).json({message: 'VIDEOGAME CREATED SUCCESSFULLY'});
                 } else {
                     if (!created) {
                         res.status(200).json({message: 'VIDEOGAME ALREADY EXIST'});
@@ -41,10 +41,10 @@ const gamePost = async (req,res) => {
                 }
             }
                 // console.log(newGameForm);
-                // return res.status(200).json(newGameForm)
+                return res.status(200).json(newGameForm)
                 
             } catch (error) {
-            return res.status(404).send('not game posted')
+            res.status(404).send('not game posted')
     }
 };
 

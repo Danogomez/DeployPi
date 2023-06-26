@@ -4,7 +4,7 @@ import style from './NavBar.module.css';
 import { useDispatch, useSelector } from "react-redux";
 import { filterGenres, filterOrigin, orderByRating, orderByname } from "../../redux/actions";
 
-const NavBar = () => {
+const NavBar = ({setCurrentPage}) => {
         
     const genres = useSelector(state=> state.genres);
     const dispatch = useDispatch();
@@ -12,11 +12,12 @@ const NavBar = () => {
 
     const handleFilterOrigin = (event)=> {
             dispatch(filterOrigin(event.target.value))
+            setCurrentPage(1)
             
     };
     const handleFilterGenre = (event)=> {
             dispatch(filterGenres(event.target.value))
-            
+            setCurrentPage(1)
         };
 
     const handleOrderGames = (event)=> {
@@ -43,7 +44,7 @@ const NavBar = () => {
                 <button className={style.button}  onClick={()=> {}}>LOG OUT</button>
                 </Link>
             </div>
-            <SearchBar  />
+            <SearchBar setCurrentPage={setCurrentPage}  />
         
             <div className={style.filterContainer}>
                 <div>

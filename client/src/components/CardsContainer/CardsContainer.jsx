@@ -1,5 +1,5 @@
 import style from './CardsContainer.module.css';
-import { useSelector } from 'react-redux';
+
 import Card from "../Card/Card";
 
 const CardsContainer = ({games}) => {

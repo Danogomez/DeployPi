@@ -9,12 +9,14 @@ const Detail = ()=> {
     const {detailId} = useParams();
     const detail = useSelector((state) => state.gameDetail);
     const dispatch = useDispatch();
-    
+    const [loading, setLoading] = useState(true)
     
 
     useEffect(()=>{
-      
-    dispatch(getGameId(detailId));
+
+    dispatch(getGameId(detailId))
+
+    .then(res=> setLoading(false));
     },[dispatch, detailId]);
         
     const handleDelete = () => {
@@ -26,7 +28,15 @@ const Detail = ()=> {
         <div className={style.padre} >
         <div className={style.card}>
           <div >
-            {detail.name ? (
+
+            {loading ? (
+          <div>
+            <h1>im Loading</h1>
+         {/* <img src="https://media0.giphy.com/media/cnzP4cmBsiOrccg20V/giphy.gif?cid=ecf05e47r7afbzr9drng3k6xdvih33w728pf6djy7lseyde1&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Cargando..."/> */}
+          </div>
+        )
+        :
+         (
               <>
                 <div className={style.buttonEffect}>
                   <Link to="/home">
@@ -39,7 +49,7 @@ const Detail = ()=> {
                 <img
                   className={style.imagen}
                   src={detail.background_image}
-                //   alt="img"
+                  alt="img"
                   />
                 <h1 className={style.h1} > {detail.name}</h1>
                 <p>ID:{detail.id}</p>
@@ -57,8 +67,6 @@ const Detail = ()=> {
                 : (<div></div>)
                 }
               </>
-            ) : (
-              <h1>im loading</h1>
             )}
           </div>
         </div>
