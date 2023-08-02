@@ -23,7 +23,7 @@ server.use((req, res, next) => {
   next();
 });
 server.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://videogamespi-hsdp.onrender.com',
   // optionsSuccessStatus: 200
 }));
 
