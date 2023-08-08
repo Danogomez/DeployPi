@@ -15,7 +15,7 @@ import axios from 'axios';
 
 export const getAllGames = ()=> {
     return async function (dispatch) {
-        const URL_BASE = '/videogames'
+        const URL_BASE = 'htps://videogamespi-a4f3.onrender.com/videogames'
         const peticion = await axios.get(URL_BASE)
         
        return dispatch({type: GET_VIDEO_GAMES,  payload: peticion.data})
